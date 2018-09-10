@@ -8,10 +8,9 @@ class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      newtodo:'test',
+      newtodo:'',
       todoLest:[
-        {id:1,title:'第一个代办'},
-        {id:1,title:'第二个代办'},
+        
       ]
 
     }
@@ -19,7 +18,7 @@ class App extends Component {
   render() {
     let todos = this.state.todoLest.map((item,index)=>{
       return (
-        <li>
+        <li key={index} >
           <TodoItem content={item} />
         </li>
       )
@@ -28,7 +27,7 @@ class App extends Component {
       <div className="App">
         <h1>我的代办</h1>
         <div className='wrapper'>
-        <TodoInput content={this.state.newtodo} />
+        <TodoInput content={this.state.newtodo} onSubmit={this.addTode.bind(this)} />
         </div>
         <ol>
           {todos}
@@ -36,7 +35,25 @@ class App extends Component {
       </div>
     );
   }
+  addTode(event){
+    this.state.todoLest.push({
+      id:idMaker(),
+      title:event.target.value,
+      status:null,
+      deleted:false,
+    })
+    this.setState({
+      newtodo:'',
+      todoLest:this.state.todoLest
+    })
+  }
 
 }
 
 export default App;
+
+let id = 0
+function idMaker(){
+  id+=1
+  return id
+}
