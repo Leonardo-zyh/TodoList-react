@@ -19,7 +19,7 @@ class App extends Component {
     let todos = this.state.todoLest.map((item,index)=>{
       return (
         <li key={index} >
-          <TodoItem content={item} />
+          <TodoItem content={item} onToggle={this.toggle.bind(this)} />
         </li>
       )
     })
@@ -36,6 +36,11 @@ class App extends Component {
         </ol>
       </div>
     );
+  }
+
+  toggle(e,content){
+    content.status = content.status=== 'completed' ? '' : 'completed'
+    this.setState(this.state)
   }
   changeTitle(event){
     this.setState({
