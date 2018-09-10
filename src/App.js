@@ -27,13 +27,21 @@ class App extends Component {
       <div className="App">
         <h1>我的代办</h1>
         <div className='wrapper'>
-        <TodoInput content={this.state.newtodo} onSubmit={this.addTode.bind(this)} />
+        <TodoInput content={this.state.newtodo}
+        onChange={this.changeTitle.bind(this)}
+        onSubmit={this.addTode.bind(this)} />
         </div>
         <ol>
           {todos}
         </ol>
       </div>
     );
+  }
+  changeTitle(event){
+    this.setState({
+      newtodo:event.target.value,
+      todoLest:this.state.todoLest
+    })
   }
   addTode(event){
     this.state.todoLest.push({
