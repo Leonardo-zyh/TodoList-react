@@ -9,4 +9,3 @@ let div = document.getElementById('root')
 ReactDOM.render(<App />,div );  
 //render,把标签渲染且放置在div
 //XML
-

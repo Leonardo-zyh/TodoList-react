@@ -3,9 +3,8 @@ import './App.css';
 import 'normalize.css';
 import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';
-import LeanCloud from './leanCloud'
 import UserDialog from './UserDialog'
-//import * as LocalStore from './localStorage'
+import LeanCloud from './leanCloud'
 
 
 class App extends Component {

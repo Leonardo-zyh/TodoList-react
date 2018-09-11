@@ -6,7 +6,7 @@ export default class TodoInput extends Component {
         return (<input type='text' defaultValue={this.props.content} 
         className="TodoInput"
         onChange={this.changeTitle.bind(this)}
-        onKeyPress={this.submit.bind(this)}/>)
+        onKeyPress={this.submit.bind(this)}/>)  
     }
     submit(e){
         if(e.key==='Enter'){
