@@ -3,25 +3,10 @@ import './App.css';
 import 'normalize.css';
 import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';
-import * as localStore from './localStorage'
+import LeanCloud from './leanCloud'
+import UserDialog from './UserDialog'
+//import * as LocalStore from './localStorage'
 
-import AV from 'leancloud-storage'
-var APP_ID = '1tQJosYf47DrGlSBzUF0hkRm-gzGzoHsz';
-var APP_KEY = '5zJnoxUAoJD4DV1K28et83WV';
-
-AV.init({
-  appId: APP_ID,
-  appKey: APP_KEY
-});
-
-var TestObject = AV.Object.extend('TestObject');
-var testObject = new TestObject();
-testObject.save({
-  words: 'Hello World!'
-}).then(function(object) {
-  alert('LeanCloud Rocks!');
-})
- 
 
 class App extends Component {
   constructor(props){
@@ -54,12 +39,13 @@ class App extends Component {
         <ol className='todoList' >
           {todos}
         </ol>
+        <UserDialog />
       </div>
     );
   }
 
   componentDidUpdate() {
-    localStore.save('todoList', this.state.todoList)
+   
   }
   toggle(e,content){
     content.status = content.status === 'completed' ? '' : 'completed'
