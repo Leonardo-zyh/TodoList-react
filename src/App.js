@@ -32,7 +32,7 @@ class App extends Component {
         <div className='wrapper'>
         <TodoInput content={this.state.newtodo}
         onChange={this.changeTitle.bind(this)}
-        onSubmit={this.addTode.bind(this)} />
+        onSubmit={this.addTodo.bind(this)} />
         </div>
         <ol className='todoList' >
           {todos}
@@ -43,7 +43,7 @@ class App extends Component {
 
 
   toggle(e,content){
-    content.status = content.status=== 'completed' ? '' : 'completed'
+    content.status = content.status === 'completed' ? '' : 'completed'
     this.setState(this.state)
   }
   changeTitle(event){
@@ -52,7 +52,7 @@ class App extends Component {
       todoLest:this.state.todoLest
     })
   }
-  addTode(event){
+  addTodo(event){
     this.state.todoLest.push({
       id:idMaker(),
       title:event.target.value,
