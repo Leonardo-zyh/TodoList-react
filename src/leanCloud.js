@@ -36,10 +36,10 @@ function getUserFromAVUser(AVUser){
 
 
 
-var TestObject = AV.Object.extend('TestObject');
+/*var TestObject = AV.Object.extend('TestObject');
 var testObject = new TestObject();
 testObject.save({
   //words: 'Hello World!'
 }).then(function(object) {
   //alert('LeanCloud Rocks!');
-})
+})*/
