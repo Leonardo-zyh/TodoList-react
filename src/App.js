@@ -30,10 +30,10 @@ class App extends Component {
     })
     return (
       <div className="App">
-        <h1>{this.state.user.username||'我'}的待办
-          {this.state.user.id?<button onClick={this.signOut.bind(this)} >登出</button>:null}
+        <h1>{this.state.user.username || '我'}的待办
+          {this.state.user.id ? <button onClick={this.signOut.bind(this)}>登出</button> : null}         
         </h1>
-        <div className='wrapper'>
+        <div className='inputW  rapper'>
         <TodoInput content={this.state.newtodo}
         onChange={this.changeTitle.bind(this)}
         onSubmit={this.addTodo.bind(this)} />
@@ -44,26 +44,25 @@ class App extends Component {
         {this.state.user.id ? 
           null : 
           <UserDialog 
-          onSignUp={this.onSignUp.bind(this)} 
-          onSignIn={this.onSignIn.bind(this)} />}
+          onSignUp={this.onSignUpOrSignIn.bind(this)} 
+          onSignIn={this.onSignUpOrSignIn.bind(this)} />}
       </div>
     );
   }
+  
+  
 
   signOut(){
     signOut()
-  }
-
-  onSignUp(user){
     let stateCopy = JSON.parse(JSON.stringify(this.state))
-    stateCopy.user = user
+    stateCopy.user = {}
     this.setState(stateCopy)
   }
 
-  onSignIn(user){
+  onSignUpOrSignIn(user){
     let stateCopy = JSON.parse(JSON.stringify(this.state))
     stateCopy.user = user
-    this.setState(stateCopy)
+    this.setState(stateCopy)  
   }
   componentDidUpdate() {   
   }
