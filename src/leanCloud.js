@@ -27,10 +27,20 @@ export function signUp(usename,password,successFn,errorFn){
   return undefined
 }
 
+export function getCurrentuser(){
+  let user = AV.User.current()
+  if(user){
+    return getUserFromAVUser(AVUser)
+  }else{
+    return null
+  }
+}
+
 function getUserFromAVUser(AVUser){
   return{
     id:AVUser.id,
     ...AVUser.attributes  //把 AVUser.attributes 的属性拷贝到这个对象
+    
   }
 }
 

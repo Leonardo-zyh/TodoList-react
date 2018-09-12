@@ -4,14 +4,14 @@ import 'normalize.css';
 import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';
 import UserDialog from './UserDialog'
-import LeanCloud from './leanCloud'
+import {getCurrentuser} from './leanCloud'
 
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      user:{},
+      user:getCurrentuser || {},
       newtodo:'', 
       todoLest: []
     }
@@ -39,7 +39,7 @@ class App extends Component {
         <ol className='todoList' >
           {todos}
         </ol>
-        <UserDialog onSignUp={this.onSignUp.bind(this)} />
+        {this.state.user.id ? null : <UserDialog onSignUp={this.onSignUp.bind(this)} />}
       </div>
     );
   }
