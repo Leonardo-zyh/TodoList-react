@@ -4,7 +4,7 @@ import 'normalize.css';
 import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';
 import UserDialog from './UserDialog'
-import {getCurrentuser} from './leanCloud'
+import {getCurrentuser,signOut} from './leanCloud'
 
 
 class App extends Component {
@@ -30,7 +30,9 @@ class App extends Component {
     })
     return (
       <div className="App">
-        <h1>{this.state.user.username||'我'}的代办</h1>
+        <h1>{this.state.user.username||'我'}的待办
+          {this.state.user.id?<button onClick={this.signOut.bind(this)} >登出</button>:null}
+        </h1>
         <div className='wrapper'>
         <TodoInput content={this.state.newtodo}
         onChange={this.changeTitle.bind(this)}
@@ -39,9 +41,17 @@ class App extends Component {
         <ol className='todoList' >
           {todos}
         </ol>
-        {this.state.user.id ? null : <UserDialog onSignUp={this.onSignUp.bind(this)} />}
+        {this.state.user.id ? 
+          null : 
+          <UserDialog 
+          onSignUp={this.onSignUp.bind(this)} 
+          onSignIn={this.onSignIn.bind(this)} />}
       </div>
     );
+  }
+
+  signOut(){
+    signOut()
   }
 
   onSignUp(user){
@@ -49,8 +59,13 @@ class App extends Component {
     stateCopy.user = user
     this.setState(stateCopy)
   }
-  componentDidUpdate() {
-   
+
+  onSignIn(user){
+    let stateCopy = JSON.parse(JSON.stringify(this.state))
+    stateCopy.user = user
+    this.setState(stateCopy)
+  }
+  componentDidUpdate() {   
   }
   toggle(e,content){
     content.status = content.status === 'completed' ? '' : 'completed'
