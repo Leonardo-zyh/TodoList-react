@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './UserDialog.css'
-import { signUp, signIn } from './leanCloud'
+import { signUp, signIn ,sendPasswordResetEmail} from './leanCloud'
 
 export default class UserDialog extends Component {
   constructor(props) {
@@ -64,6 +64,21 @@ export default class UserDialog extends Component {
     stateCope.formData[key] = e.target.value
     this.setState(stateCope)
   }
+  
+  showForgotPassword(){
+    let stateCope = JSON.parse(JSON.stringify(this.state))
+    stateCope.selectedTab = 'forgotPassword'
+    this.setState(stateCope)
+  }
+  resetPassword(e){
+    e.preventDefault()
+    sendPasswordResetEmail(this.state.formData.email)
+  }
+  returnToSignIn(){
+    let stateCope = JSON.parse(JSON.stringify(this.state))
+    stateCope.selectedTab = 'signInOrSignUp'
+    this.setState(stateCope)
+  }
 
 
   render() {
@@ -102,7 +117,7 @@ export default class UserDialog extends Component {
       </div>
       <div className="row actions">
         <button type="submit">登录</button>
-        <a href='#' onClick={showForgotPassword.bind(this)} >忘记密码了？</a>
+        <a href='#' onClick={this.showForgotPassword.bind(this)} >忘记密码了？</a>
       </div>
     </form>
     )
@@ -131,13 +146,14 @@ export default class UserDialog extends Component {
       <h3>重置密码</h3>
       <form className='forgotPassword' onSubmit={this.resetPassword.bind(this)}>
       <div className='row'>
-      <label>邮箱
+      <label>邮箱</label>
         <input type='text' value={this.state.formData.email}
-        onChange={this.changeFormData.bind(this.email)} />
-        </label>
+        onChange={this.changeFormData.bind(this,'email')} />
+        
       </div>
       <div className='row actions'>
         <button type='submit'>发送重置邮件</button>
+        <a href='#' onClick={this.returnToSignIn.bind(this)}>返回登录</a>
       </div>
       </form>
       </div>
@@ -149,15 +165,6 @@ export default class UserDialog extends Component {
         </div>
       </div>
     )            //判断selected，执行变量
-  }
-
-  showForgotPassword(){
-    let stateCope = JSON.parse(JSON.stringify(this.state))
-    stateCope.selectedTab = 'forgotPassword'
-    this.setState(stateCope)
-  }
-  resetPassword(){
-    
   }
 }
 
