@@ -31,6 +31,15 @@ export default class UserDialog extends Component {
         case 202:
           alert('用户名已被占用')
           break
+        case 203:
+          alert('邮件地址已被占用')
+          break
+        case 125:
+          alert('邮件地址无效')
+          break
+        case 201:
+          alert('密码不能为空')
+          break
         default:
           alert(error)
           break
@@ -44,11 +53,18 @@ export default class UserDialog extends Component {
     let { username, password } = this.state.formData
     let success = (user) => {
       this.props.onSignIn.call(null, user)
+      window.location.reload() //登录刷新
     }
     let error = (error) => {
       switch (error.code) {
         case 210:
           alert('用户名与密码不匹配')
+          break
+        case 211:
+          alert('用户名不存在')
+          break
+        case 216:
+          alert('邮箱地址未验证')
           break
         default:
           alert(error)
@@ -81,7 +97,7 @@ export default class UserDialog extends Component {
 
 
   render() {
-    
+
     return (
       <div className="UserDialog-Wrapper">
         <div className="UserDialog">

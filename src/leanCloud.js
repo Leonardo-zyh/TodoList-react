@@ -102,7 +102,9 @@ export function getCurrentUser() {
 }
 
 export function signOut() {
-  AV.User.logOut()
+  AV.User.logOut();
+  // 现在的 currentUser 是 null 了
+  //var currentUser = AV.User.current();
   return undefined
 }
 
