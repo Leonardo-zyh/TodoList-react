@@ -1,5 +1,4 @@
-
-import AV, { ACL } from 'leancloud-storage'
+import AV from 'leancloud-storage'
 var APP_ID = '1tQJosYf47DrGlSBzUF0hkRm-gzGzoHsz';
 var APP_KEY = '5zJnoxUAoJD4DV1K28et83WV';
 
@@ -13,6 +12,7 @@ export default AV
 export const TodoModel = {     //*批量操作
   getByUser(user, successFn, errorFn) {
     var query = new AV.Query('Todo');
+    query.equalTo('deleted', false);
     query.find().then((response) => {
       let array = response.map((t) => {
         return { id: t.id, ...t.attributes }
@@ -31,7 +31,7 @@ export const TodoModel = {     //*批量操作
     todo.set('deleted', deleted)
     //单用户权限设置
     let acl = new AV.ACL()
-    acl.setPublicReadAccess(false) // 注意这里是 false
+    acl.setPublicReadAccess(false) // 这里是 false
     acl.setWriteAccess(AV.User.current(), true)
     acl.setReadAccess(AV.User.current(), true)
     todo.setACL(acl)
@@ -55,12 +55,13 @@ export const TodoModel = {     //*批量操作
     })
   },
   destroy(todoId, successFn, errorFn) {
-    var todo = AV.Object.createWithoutData('Todo', todoId);
+    TodoModel.updata({id: todoId, deleted: true}, successFn, errorFn)
+   /* var todo = AV.Object.createWithoutData('Todo', todoId);
     todo.destroy().then(function (response) {
       successFn && successFn.call(null)//删除成功
     }, function (error) {
       errorFn && errorFn.call(null.error)
-    });
+    });*/
   }
 }
 
@@ -121,13 +122,3 @@ function getUserFromAVUser(AVUser) {
 
   }
 }
-
-
-
-/*var TestObject = AV.Object.extend('TestObject');
-var testObject = new TestObject();
-testObject.save({
-  //words: 'Hello World!'
-}).then(function(object) {
-  //alert('LeanCloud Rocks!');
-})*/
