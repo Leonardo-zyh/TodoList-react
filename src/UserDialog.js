@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './UserDialog.css'
 
-import { signUp, signIn, sendPasswordResetEmail } from './leanCloud'
+import { signUp, signIn,signOut, sendPasswordResetEmail } from './leanCloud'
 import SignInOrSignUp from './SignInOrSignUp'
 import ForgotPassword from './ForgotPassword'
 
@@ -24,7 +24,9 @@ export default class UserDialog extends Component {
     e.preventDefault()
     let { email, username, password } = this.state.formData
     let success = (user) => {
-      this.props.onSignUp.call(null, user)
+      //this.props.onSignUp.call(null, user)
+      alert('注册成功，请验证账号邮箱后登陆')
+      signOut()
     }
     let error = (error) => {
       switch (error.code) {

@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       user:getCurrentUser() || {},
       newtodo:'', 
-      todoList: []
+      todoList: [],
     }
   let user = getCurrentUser()
   if(user){
@@ -52,9 +52,10 @@ class App extends Component {
         </ol>
         {this.state.user.id ? 
           null : 
-          <UserDialog 
-          onSignUp={this.onSignUpOrSignIn.bind(this)} 
-          onSignIn={this.onSignUpOrSignIn.bind(this)} />}
+          <UserDialog
+          onSignIn={this.onSignUpOrSignIn.bind(this)} 
+          onSignUp={this.onSignUpOrSignIn.bind(this)}
+           />}
       </div>
     );
   }

@@ -74,6 +74,7 @@ export function signUp(email, username, password, successFn, errorFn) {
   user.setPassword(password);
   // 设置邮箱
   user.setEmail(email);
+  
   user.signUp().then(function (loginedUser) {
     let user = getUserFromAVUser(loginedUser)
     successFn.call(null, user)
