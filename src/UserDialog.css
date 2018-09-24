@@ -2,26 +2,45 @@
  .UserDialog-Wrapper{ 
     /*全屏*/      position: fixed; top: 0; left: 0; bottom: 0; right: 0; 
     /*内容居中*/  display: flex; justify-content: center; align-items: center;
-    background: hsla(0,0%,0%,0.40);
+    background: url(./img/convergedbg_v2_pdvUOT_2pyXH5ith335y8A2.jpg) no-repeat center;
+    background-size: cover;
   }
   .UserDialog{
+    display: flex;
     border: 1px solid;
     border-radius: 4px;
-    min-width: 20em;
+    min-height: 338px;
+    min-width: 440px;
+    padding: 44px;
     background: white;
     border: 1px solid #aaa;
+ 
     box-shadow: 0 0 1em hsla(0,0%,0%,0.35);
 }
-.UserDialog .signInOrSignUp > nav:first-child{ padding: 1em; margin-left: -2em;}
-.UserDialog .signInOrSignUp > nav:first-child label{ margin-left: 2em; cursor: pointer;}
- .UserDialog .signInOrSignUp > .panes { padding: 0 1em 1em; }
+.UserDialog .signInOrSignUp{width:100%}
+.UserDialog .signInOrSignUp > nav{display: flex;flex-direction: row;justify-content: center;margin: 1em;}
+.UserDialog .signInOrSignUp > nav:first-child label{ padding: 0em 1em;cursor: pointer;}
+ .UserDialog .signInOrSignUp > .panes { padding:  1em 1em; }
  .UserDialog .forgotPassword > h3 { padding: .5em; }
  .UserDialog .forgotPassword > form { padding: 0 1em 1em; }
 
 
-.UserDialog form>.row{ display: flex; padding: .3em 0;}
-.UserDialog form>.row>label:first-child{ width: 4em; }
+.UserDialog form>.row{ display: flex; padding: 10px 0;}
+.UserDialog form>.row>label{ width: 4em; line-height: 28px;}
 .UserDialog form>.row.actions{ padding-left: 4em;  display: flex;align-content: center;}
 .UserDialog form>.row.actions a{vertical-align: middle}
 .UserDialog form>.row.actions button{margin-right: .5em;}
 .UserDialog button{font:inherit;padding: .2em;}
+
+.UserDialog form>.row input{
+  width: 20vw;
+  font-size: 15px;
+  padding: 0.3em 0;
+  outline:none;
+  border: none;
+  border-bottom: 1px solid #000;
+}
+input::-webkit-input-placeholder{color:#999;font-size: 12px;}
+.UserDialog .signUp .row input{
+  color: #000
+}

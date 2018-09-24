@@ -23,7 +23,7 @@ render () {
             <input type="radio" value="signUp"
               checked={this.state.selected === 'signUp'}
               onChange={this.switch.bind(this)}
-            /> 注册</label>
+            /> 创建账户</label>
           <label>
             <input type="radio" value="signIn"
               checked={this.state.selected === 'signIn'}

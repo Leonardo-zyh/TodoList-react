@@ -6,7 +6,7 @@ export default class SignUpForm extends Component {
             <form className="signUp" onSubmit={this.props.onSubmit.bind(this)} > {/* 注册*/}
                 <div className="row">
                     <label>邮箱</label>
-                    <input type="text" value={this.props.formData.email}
+                    <input type="text" placeholder='someone@example.com' value={this.props.formData.email}
                         onChange={this.props.onChange.bind(null, 'email')} />
                 </div>
                 <div className="row">

@@ -5,9 +5,9 @@ import TodoInput from './TodoInput';
 import TodoItem from './TodoItem';
 import UserDialog from './UserDialog'
 import {getCurrentUser,signOut,TodoModel} from './leanCloud'
+``
 
-
-class App extends Component {
+class App extends Component {   //React,createClass()
   constructor(props){
     super(props)
     this.state = {
