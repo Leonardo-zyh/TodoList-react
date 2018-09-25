@@ -39,11 +39,12 @@ class App extends Component {   //React,createClass()
     })
     return (
       <div className="App">
-        <h1>{this.state.user.username || '我'}的待办
+      <div className='username'> {this.state.user.username || '我'}</div>
+        <h1>To-Do
           {this.state.user.id ? <button onClick={this.signOut.bind(this)}>登出</button> : null}         
         </h1>
-        <div className='inputW  rapper'>
-        <TodoInput content={this.state.newtodo}
+        <div className='inputWrapper'>
+        <TodoInput  content={this.state.newtodo}
         onChange={this.changeTitle.bind(this)}
         onSubmit={this.addTodo.bind(this)} />
         </div>

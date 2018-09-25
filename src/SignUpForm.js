@@ -10,7 +10,7 @@ export default class SignUpForm extends Component {
                         onChange={this.props.onChange.bind(null, 'email')} />
                 </div>
                 <div className="row">
-                    <label>用户名</label>
+                    <label>账号</label>
                     <input type="text" value={this.props.formData.username}
                         onChange={this.props.onChange.bind(null, 'username')} />
                 </div>

@@ -6,34 +6,40 @@
     background-size: cover;
   }
   .UserDialog{
+    height: 15vh;
     display: flex;
     border: 1px solid;
     border-radius: 4px;
     min-height: 338px;
     min-width: 440px;
-    padding: 44px;
+    padding: 33px 44px;
+    
     background: white;
-    border: 1px solid #aaa;
- 
-    box-shadow: 0 0 1em hsla(0,0%,0%,0.35);
+    box-shadow: 0 0  1em 5px  hsla(0,0%,0%,0.35);
 }
-.UserDialog .signInOrSignUp{width:100%}
+.UserDialog .signInOrSignUp{width:100%;display: flex;flex-direction: column;justify-content: space-between}
+.UserDialog .signInOrSignUp .radio{display: none;}
 .UserDialog .signInOrSignUp > nav{display: flex;flex-direction: row;justify-content: center;margin: 1em;}
-.UserDialog .signInOrSignUp > nav:first-child label{ padding: 0em 1em;cursor: pointer;}
+.UserDialog .signInOrSignUp > nav label{ padding: 0em 1em;cursor: pointer;color:#404040;font-size: 1.3em}
  .UserDialog .signInOrSignUp > .panes { padding:  1em 1em; }
- .UserDialog .forgotPassword > h3 { padding: .5em; }
+ .UserDialog .forgotPassword {width: 100%;display: flex;flex-direction: column;}
+ .UserDialog  input[type=text]{width: 40vw}
+ .UserDialog .forgotPassword > h3 { padding: .5em; margin-bottom: 2em}
  .UserDialog .forgotPassword > form { padding: 0 1em 1em; }
 
 
-.UserDialog form>.row{ display: flex; padding: 10px 0;}
+
+.UserDialog form>.row{ display: flex; padding: 7px 0;}
+.UserDialog form.signIn >.row.signIn{position: relative;top:-15px;margin-bottom: 10px}
 .UserDialog form>.row>label{ width: 4em; line-height: 28px;}
-.UserDialog form>.row.actions{ padding-left: 4em;  display: flex;align-content: center;}
-.UserDialog form>.row.actions a{vertical-align: middle}
-.UserDialog form>.row.actions button{margin-right: .5em;}
-.UserDialog button{font:inherit;padding: .2em;}
+.UserDialog form>.row.actions{ padding-left: 4em;margin-top: 0.7em;  display: flex;align-content: center;}
+.UserDialog form>.row.actions a{vertical-align: middle;line-height: 26px;color: #0067b8;font-size: 12px}
+.UserDialog form>.row.actions button{margin-right: 1em;}
+.UserDialog form>.row.actions button:focus{outline:none;border: 1px solid #040440;;}
+.UserDialog button{border: none;background-color: #0067b8;color: #fff;padding: 4px 12px;font:inherit}
 
 .UserDialog form>.row input{
-  width: 20vw;
+  width: 22vw;
   font-size: 15px;
   padding: 0.3em 0;
   outline:none;

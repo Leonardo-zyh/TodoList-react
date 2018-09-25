@@ -6,7 +6,7 @@ export default class SignInOrSignUp extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            selected: 'signUp'
+            selected: 'signIn'
         }
     }
     switch(e) {
@@ -20,15 +20,15 @@ render () {
       <div className="signInOrSignUp">
         <nav>
           <label>
-            <input type="radio" value="signUp"
+            <input className="radio"  type="radio" value="signUp"
               checked={this.state.selected === 'signUp'}
               onChange={this.switch.bind(this)}
             /> 创建账户</label>
           <label>
-            <input type="radio" value="signIn"
+            <input className="radio"  type="radio" value="signIn"
               checked={this.state.selected === 'signIn'}
               onChange={this.switch.bind(this)}
-            /> 登录</label>
+            /> 登录账户</label>
         </nav>
         <div className="panes">
           {this.state.selected === 'signUp' ?
